@@ -3,7 +3,9 @@
 This repository contains code and resources for the [Faceless](https://github.com/HeisenbergLin22/Grants-Program/blob/master/faceless.md) program.
 
 ## All Steps to Build and Start the Faceless Substrate Node
+
 ### Macos
+
 ```bash
 # Install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -42,27 +44,19 @@ pairing. SIAM J. Comput., 32(3):586–615, 2003.
 
 Implemented [here](./aibe/src/bf_ibe.rs).
 
-
-
 ### BN254 Curve (alt_bn128)
 
 An implementation of the `alt_bn128` curve that is almost the same as the [zeropool-bn](https://github.com/zeropoolnetwork/bn.git)  repository, but with some fixes to be applicable in our faceless protocol.
 
-
-
 ### BulletProof
 
 An implementation of the [BulletProof](https://eprint.iacr.org/2017/1066.pdf) zero-knowledge protocol based on BN254 curve.
-
-
 
 ## Substrate Implementation
 
 - A subtrate node in [faceless-substrate-node](./faceless-substrate-node)
 
 - A web front end in [faceless-front-end](./faceless-front-end)
-  
-  
 
 ## Build and Run Instruction
 
@@ -121,6 +115,8 @@ cargo test test_zk_burn -- --show-output
 cargo test test_zk_transfer -- --show-output
 ```
 
+NOTE: The pallet functions are intended for DApp usage. They require some global chain configuration and input construction which are difficult to carry out in unit tests. So we recommend to read the [Tutorial section](#tutorial) for usage.
+
 ## Benchmark
 
 We give a benchmark of the implemented identity-based encryption scheme below. Experiments are performed on a Macbook Pro with 2.5 GHz Dual-Core Intel Core i7. All tests are run in a single thread. We run the experiments for vectors of length 1, 5, 10, and 20.
@@ -132,7 +128,14 @@ We give a benchmark of the implemented identity-based encryption scheme below. E
 | Encrypt | 236.25 ms |
 | Decrypt | 185.11 ms |
 
+We also give a benchmark of the 4 critical functions in Faceless, implemented in the [faceless pallet](./faceless-substrate-node/pallets/faceless/src/lib.rs).
 
+| Functionalities | Time  |
+| --------------- | ----- |
+| Register        | 35 ms |
+| Deposit         | 46 ms |
+| Withdraw        | 52 ms |
+| Transfer        | 55 ms |
 
 ## Tutorial
 
@@ -173,8 +176,6 @@ Transfer statement:
 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
 ```
 
-
-
 #### Use Substrate to Verify ZK Proof
 
 After generating the ZK proof, we can use a substrate pallet to verify it. To setup the environment, run:
@@ -191,13 +192,77 @@ yarn install
 yarn start
 ```
 
-This should open a web page in the browser: http://localhost:8000
+This should open a web page in the browser: [http://localhost:8000](http://localhost:8000)
 
 On the web page, we select "Pallet Interator --> Extrinsic --> faceless --> verifyBurn", then copy the above burn statement and proof to the corresponding input boxes, like the following image, and then click "Signed":
 
 ![alt](./imgs/input.png)
 
 We should see corresponding events that say the burn proof verification is successful.
+
+### Faceless DApp Test
+
+For the 4 core pallet fucntions (`register`, `deposit`, `withdraw`, `transfer`), we deliver a Faceless DApp to interact with them, which is also the biggest contribution in Stage 2 of this project. Here is the detailed guide for the interaction.
+
+#### Step 1: Run a local faceless substrate node
+
+Because the Faceless DApp requires a running faceless substrate node, we show here how to construct a local testing node. For the moment, this node must be running on the same machine where you open the browser to use the DApp.
+
+If you have a full fledged [Substrate development environment](https://docs.substrate.io/tutorials/get-started/build-local-blockchain/), then you can run the following commands your terminal:
+
+```bash
+cd faceless-substrate-node
+cargo build --release
+./target/release/faceless-node --dev
+```
+
+Otherwise, you can use our dockerfile to create a container environment:
+
+```bash
+docker build -t faceless .
+docker run -it --network host faceless /bin/bash
+# NOW we are inside the container
+cd faceless-substrate-node
+cargo build --release
+./target/release/faceless-node --dev
+```
+
+#### Step 2: Play with the Faceless DApp
+
+We have already deployed the DApp website [here](https://fascinating-queijadas-d45716.netlify.app/). The source code of this DApp frontend is located in [Faceless DApp](./Faceless_frontend).
+
+Normally, if you can access the Internet, you don't need to build the DApp. Just use our [depolyed website](https://fascinating-queijadas-d45716.netlify.app/). In case you want to build it, run the following:
+
+```bash
+cd Faceless_frontend/
+wasm-pack build faceless-wasm-wrapper --target web
+yarn
+yarn dev
+```
+
+
+
+**Register**
+
+![img](./imgs/register-1.png)
+
+![](./imgs/register-2.png)
+
+**Deposit**
+
+![](./imgs/deposit-1.png)
+
+![](./imgs/deposit-2.png)
+
+**Withdraw**
+
+![](./imgs/withdraw-1.png)
+
+![](./imgs/withdraw-2.png)
+
+**Transfer**
+
+![](./imgs/transfer-1.png)
 
 ## Documentation
 
@@ -207,6 +272,20 @@ Run the following to generate documentation for the anonymous identity-based enc
 cd aibe
 cargo doc --no-deps
 ```
+
+### About Faceless APIs (Newly Added Features)
+
+As discussed above, there are 4 critical functionalities, implemented in both the substrate pallet and in the DApp. Here is a brief introduction about them:
+
+- **Register**: To add an account on chain. It is bound to a wallet address and a platform ID.
+
+- **Deposit**: Deposit some fund to an account on chain. The fund is encrypted with IBE encryption.
+
+- **Withdraw**: Withdraw some fund from chain to a wallet address.
+
+- **Transfer**: Transfer fund between two accounts on chain.
+
+
 
 ## Security Warnings
 

@@ -27,6 +27,7 @@ aibe = { path = "../../../aibe", default-features = false }
 borsh = { version = '0.9.1', default-features = false }
 base64 = { default-features = false, version = '0.13.0', features=["alloc"] }
 rand_chacha = { version = "0.3.1", default-features = false }
+pallet-balances = { git = "https://github.com/paritytech/substrate", package = "pallet-balances", default-features = false , branch = "polkadot-v0.9.32" }
 
 [dev-dependencies]
 sp-core = { default-features = false, package = "sp-core", git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.32" }
