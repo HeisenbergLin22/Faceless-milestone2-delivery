@@ -192,7 +192,7 @@ yarn install
 yarn start
 ```
 
-This should open a web page in the browser: [http://localhost:8000](http://localhost:8000)
+This should open a web page in the browser: [http://localhost:3000/substrate-front-end-template](http://localhost:3000/substrate-front-end-template)
 
 On the web page, we select "Pallet Interator --> Extrinsic --> faceless --> verifyBurn", then copy the above burn statement and proof to the corresponding input boxes, like the following image, and then click "Signed":
 
