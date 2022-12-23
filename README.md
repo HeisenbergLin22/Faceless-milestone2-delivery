@@ -262,7 +262,15 @@ yarn dev
 
 **Transfer**
 
-![](./imgs/transfer-1.png)
+![](./imgs/transfer-2.png)
+![](./imgs/transfer-3.png)
+![](./imgs/transfer-4.png)
+![](./imgs/transfer-5.png)
+![](./imgs/transfer-6.png)
+![](./imgs/transfer-7.png)
+![](./imgs/transfer-8.png)
+![](./imgs/transfer-9.png)
+![](./imgs/transfer-10.png)
 
 ## Documentation
 
